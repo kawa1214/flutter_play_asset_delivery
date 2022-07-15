@@ -33,7 +33,7 @@ class FlutterPlayAssetDeliveryPlugin: FlutterPlugin, MethodCallHandler {
       var assetName: String = call.arguments.toString()
 
       if (assetList.contains(assetName)) {
-        val file: File = createTempFile(assetName)
+        val file: File = createTempFile("file", assetName)
         file.writeBytes(assetManager.open(assetName).readBytes())
         result.success(file.absolutePath)
       } else {
